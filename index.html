@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICS to Google Calendar Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ICS to Google Calendar Converter</h1>
+        <textarea id="icsInput" placeholder="Paste your .ics file content here..."></textarea>
+        <div class="file-upload">
+          <input type="file" id="icsFile" accept=".ics" onchange="handleFileUpload()" hidden>
+          <button id="customFileButton" onclick="document.getElementById('icsFile').click()">Choose File</button>
+          <span id="fileName">No file chosen</span>
+      </div>
+        <button onclick="convertToGoogleCalendar()">Create Link</button>
+        <div id="result" class="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
