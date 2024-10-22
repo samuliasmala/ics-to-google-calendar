@@ -4,6 +4,8 @@
   --container-bg: #fff;
   --button-bg: #4caf50;
   --button-hover-bg: #45a049;
+  --link-color: #0066cc;
+  --link-hover-color: #004a99;
 }
 
 [data-theme='dark'] {
@@ -12,6 +14,8 @@
   --container-bg: #444;
   --button-bg: #888;
   --button-hover-bg: #777;
+  --link-color: #66aaff;
+  --link-hover-color: #3399ff;
 }
 
 [data-theme='dark'] #sunIcon {
@@ -136,4 +140,14 @@ textarea {
 
 .theme-toggle-button:hover {
   color: var(--button-hover-bg);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
 }
