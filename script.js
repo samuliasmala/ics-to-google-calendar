@@ -83,3 +83,29 @@ function generateGoogleCalendarLink(
 
   return `${base}?${params.toString()}`;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const themeToggle = document.getElementById('themeToggle');
+  const userPrefersDark =
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Set initial theme based on system preference or stored preference
+  const storedTheme = localStorage.getItem('theme');
+  if (storedTheme) {
+    document.documentElement.setAttribute('data-theme', storedTheme);
+  } else {
+    document.documentElement.setAttribute(
+      'data-theme',
+      userPrefersDark ? 'dark' : 'light'
+    );
+  }
+
+  // Theme toggle button event listener
+  themeToggle.addEventListener('click', function () {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+});
