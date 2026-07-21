@@ -27,7 +27,7 @@
         </button>
         <textarea id="icsInput" placeholder="Paste your .ics file content here..."></textarea>
         <div class="file-upload">
-          <input type="file" id="icsFile" accept=".ics" onchange="handleFileUpload()" hidden>
+          <input type="file" id="icsFile" accept=".ics,.ical,.icalendar,.ifb,text/calendar" onchange="handleFileUpload()" hidden>
           <button id="customFileButton" class="button" onclick="document.getElementById('icsFile').click()">Choose File</button>
           <span id="fileName">No file chosen</span>
       </div>
