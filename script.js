@@ -46,6 +46,13 @@ function convertToGoogleCalendar() {
   }
 }
 
+function unescapeICSText(text) {
+  // Unescape TEXT values per RFC 5545 section 3.3.11
+  return text.replace(/\\(\\|;|,|[nN])/g, function (match, char) {
+    return char === 'n' || char === 'N' ? '\n' : char;
+  });
+}
+
 function parseICS(icsContent) {
   const titleMatch = icsContent.match(/SUMMARY:(.*)/);
   const startMatch = icsContent.match(/DTSTART(?:;TZID=[^:]+)?:(.*)/);
@@ -55,11 +62,11 @@ function parseICS(icsContent) {
 
   if (titleMatch && startMatch && endMatch) {
     return {
-      title: titleMatch[1],
+      title: unescapeICSText(titleMatch[1]),
       startTime: startMatch[1],
       endTime: endMatch[1],
-      details: detailsMatch ? detailsMatch[1] : '',
-      location: locationMatch ? locationMatch[1] : '',
+      details: detailsMatch ? unescapeICSText(detailsMatch[1]) : '',
+      location: locationMatch ? unescapeICSText(locationMatch[1]) : '',
     };
   }
 
