@@ -55,8 +55,8 @@ function unescapeICSText(text) {
 
 function parseICS(icsContent) {
   const titleMatch = icsContent.match(/SUMMARY:(.*)/);
-  const startMatch = icsContent.match(/DTSTART(?:;TZID=[^:]+)?:(.*)/);
-  const endMatch = icsContent.match(/DTEND(?:;TZID=[^:]+)?:(.*)/);
+  const startMatch = icsContent.match(/DTSTART(?:;[^:]*)?:(.*)/);
+  const endMatch = icsContent.match(/DTEND(?:;[^:]*)?:(.*)/);
   const detailsMatch = icsContent.match(/DESCRIPTION:(.*)/);
   const locationMatch = icsContent.match(/LOCATION:(.*)/);
 
